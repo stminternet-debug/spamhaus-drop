@@ -13,11 +13,12 @@ jobs:
       - name: Descargar y limpiar
         run: |
           mkdir -p mikrotik
+          echo "/ip firewall address-list" > mikrotik/HN-BLACKLIST-SPAMHAUS.rsc
           curl -s https://www.spamhaus.org/drop/drop.txt \
             | grep -E '^[0-9]+\.' | cut -d' ' -f1 | sort -u \
             | while read cidr; do
                 echo "add list=HN-BLACKLIST-SPAMHAUS comment=SPAMHAUS-DROP address=$cidr"
-              done > mikrotik/HN-BLACKLIST-SPAMHAUS.rsc
+              done >> mikrotik/HN-BLACKLIST-SPAMHAUS.rsc
       - name: Publicar
         run: |
           git config user.name "drop-cleaner"
