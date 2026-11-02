@@ -1,3 +1,4 @@
+/ip firewall address-list
 add list=HN-BLACKLIST-SPAMHAUS comment=SPAMHAUS-DROP address=1.10.16.0/20
 add list=HN-BLACKLIST-SPAMHAUS comment=SPAMHAUS-DROP address=1.19.0.0/16
 add list=HN-BLACKLIST-SPAMHAUS comment=SPAMHAUS-DROP address=1.32.128.0/18
